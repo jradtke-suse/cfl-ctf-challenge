@@ -103,7 +103,7 @@ helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.git
 ## Challenges
 ### 1. Deploy Farm Services
 
-**NOTE:** Do not temper with Admission Control Rules themsleves, rather make sure that NeuVector allows that deployment to pass. See the logs.
+**NOTE:** Do not tamper with Admission Control Rules themsleves, rather make sure that NeuVector allows that deployment to pass. See the logs.
 
 * Run: ```kubectl apply -f farm-services.yaml```
 * Ensure the workloads are being deployed successfully
