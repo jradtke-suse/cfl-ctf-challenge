@@ -70,18 +70,16 @@ Your mission, should you choose to accept it, is to:
 * Install git based on your operating system - https://git-scm.com/downloads.
 ## Setup
 ### Clone the Challenge repo
-1. 
-```bash 
-git clone https://github.com/olegvorobiov/cfl-ctf-challenge.git
-```
+1.  ```git clone https://github.com/olegvorobiov/cfl-ctf-challenge.git```
 2. change directory inside the clonned repo: `cd cfl-ctf-challenge`
 ### Deploy modded NeuVector chart
 
 **NOTE:** before proceeding, ensure that your *kubecontext* is configured to talk to Rancher Desktop cluster.
 
 1. Install ingress-nginx
-
-    ```bash helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace --version 4.11.2```
+```bash 
+helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace --version 4.11.2
+```
 
 2. Pick the hostname you want to use to access NeuVector's UI. Example: **nv.rd.localhost**
     * Add a new entry to your ```/etc/hosts``` file:
