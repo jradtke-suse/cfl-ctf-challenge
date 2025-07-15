@@ -82,8 +82,10 @@ helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.git
 ```
 
 2. Pick the hostname you want to use to access NeuVector's UI. Example: **nv.rd.localhost**
-    * Add a new entry to your ```/etc/hosts``` file:
+    * Update the existing "localhost" entry to your ```/etc/hosts``` file:
 
+        ```127.0.0.1	localhost```
+        To:
         ```127.0.0.1	localhost nv.rd.localhost```
 3. Deploy NeuVector to a namespace of your choice, pick the name of the release as you wish:
 
