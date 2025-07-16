@@ -74,7 +74,11 @@ Your mission, should you choose to accept it, is to:
 ```bash
 git clone https://github.com/olegvorobiov/cfl-ctf-challenge.git
 ```
-2. change directory inside the clonned repo: `cd cfl-ctf-challenge`
+2. change directory inside the clonned repo: 
+```bash
+cd cfl-ctf-challenge
+```
+
 ### Deploy modded NeuVector chart
 
 **NOTE:** before proceeding, ensure that your *kubecontext* is configured to talk to Rancher Desktop cluster.
