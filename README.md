@@ -89,17 +89,23 @@ helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.git
         To:
 
         ```127.0.0.1	localhost nv.rd.localhost```
+
 3. Deploy NeuVector to a namespace of your choice, pick the name of the release as you wish:
 
-    ```helm install nv -n nv --create-namespace ./helm/core -f ./helm/core/values.yaml --set manager.ingress.host="nv.rd.localhost"```
+```bash
+helm install nv -n nv --create-namespace ./helm/core -f ./helm/core/values.yaml --set manager.ingress.host="nv.rd.localhost"
+```
+
 4. After installation, give it about two minutes for NeuVector to startup, then navigate to Rancher Desktop, go to Port Forwarding and find the webui service and forward it to a port `8443`.
 
     ![rd5](https://github.com/olegvorobiov/cfl-ctf-challenge/blob/master/images/rd5.png)
+
 5. Open your favorite browser and navigate to https://nv.rd.localhost:8443
 
     Default login:
     * **Username:** `admin`
     * **Password:** `admin`
+
 ## Challenges
 ### 1. Deploy Farm Services
 
@@ -132,21 +138,22 @@ If you restart Rancher Desktop at any point of this challenge, your progress wil
     Refer to a diagram below for graphical representation:
     ![Diagram1](https://github.com/olegvorobiov/cfl-ctf-challenge/blob/master/images/diagram1.png)
 2. Switch the groups into a Protect/Protect mode and now try some of these commands:
+
 * Cow should not be able to talk to sheep:
 ```bash
 kubectl exec -it --namespace warmfield \
   $(kubectl get pods --namespace warmfield --selector app=cow -o jsonpath='{.items[*].metadata.name}') \
   -- curl sheep-svc.warmfield.svc.cluster.local:9000 --max-time 5
 ```
-* You should not be able to execute in any of the pods. Example for bee:
 
+* You should not be able to execute in any of the pods. Example for bee:
 ```bash
 kubectl exec -it --namespace treefarm \
   $(kubectl get pods --namespace treefarm --selector app=bee -o jsonpath='{.items[*].metadata.name}') \
   -- bash
 ```
-* Sheep should not be able to talk to rabbit.
 
+* Sheep should not be able to talk to rabbit.
 ```bash
 kubectl exec -it --namespace warmfield \
   $(kubectl get pods --namespace warmfield --selector app=sheep -o jsonpath='{.items[*].metadata.name}') \
@@ -154,17 +161,18 @@ kubectl exec -it --namespace warmfield \
 ```
     
 * Chicken should be only able to communicate with suse.com, and not any other outside service. If you weren't able to accomplish this - don't worry it doesn't affect the end goal :-)
-
 ```bash
 kubectl exec -it --namespace farmyard \
   $(kubectl get pods --namespace farmyard --selector app=chicken -o jsonpath='{.items[*].metadata.name}') \
   -- curl https://google.com --max-time 5
 ```
 
-
 ### 3. Deploy a second set of workloads
 
-* Run: ```kubectl apply -f addon-services.yaml```
+* Run: 
+```bash
+kubectl apply -f addon-services.yaml
+```
 * Ensure the workloads are being deployed successfully
 
 ### 4. Wrap up and Flag
