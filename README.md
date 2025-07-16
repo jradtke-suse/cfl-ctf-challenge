@@ -79,7 +79,8 @@ git clone https://github.com/olegvorobiov/cfl-ctf-challenge.git
 cd cfl-ctf-challenge
 ```
 
-### Deploy modded NeuVector chart
+### Deploy modified NeuVector chart
+We have created a helm chart specific for this challenge.
 
 **NOTE:** before proceeding, ensure that your *kubecontext* is configured to talk to Rancher Desktop cluster.
 
