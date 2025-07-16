@@ -78,7 +78,9 @@ Your mission, should you choose to accept it, is to:
 
 1. Install ingress-nginx
 ```bash 
-helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace --version 4.11.2
+helm upgrade --install ingress-nginx ingress-nginx \
+  --repo https://kubernetes.github.io/ingress-nginx 
+  --namespace ingress-nginx --create-namespace --version 4.11.2
 ```
 
 2. Pick the hostname you want to use to access NeuVector's UI. Example: **nv.rd.localhost**
@@ -93,7 +95,8 @@ helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.git
 3. Deploy NeuVector to a namespace of your choice, pick the name of the release as you wish:
 
 ```bash
-helm install nv -n nv --create-namespace ./helm/core -f ./helm/core/values.yaml --set manager.ingress.host="nv.rd.localhost"
+helm install nv -n nv --create-namespace ./helm/core \
+  -f ./helm/core/values.yaml --set manager.ingress.host="nv.rd.localhost"
 ```
 
 4. After installation, give it about two minutes for NeuVector to startup, then navigate to Rancher Desktop, go to Port Forwarding and find the webui service and forward it to a port `8443`.
@@ -111,7 +114,10 @@ helm install nv -n nv --create-namespace ./helm/core -f ./helm/core/values.yaml 
 
 **NOTE:** Do not tamper with Admission Control Rules themsleves, rather make sure that NeuVector allows that deployment to pass. See the logs.
 
-* Run: ```kubectl apply -f farm-services.yaml```
+* Run: 
+```bash
+kubectl apply -f farm-services.yaml
+```
 * Ensure the workloads are being deployed successfully
 
 ### 2. Configure Network and Process rules
@@ -137,6 +143,7 @@ If you restart Rancher Desktop at any point of this challenge, your progress wil
 
     Refer to a diagram below for graphical representation:
     ![Diagram1](https://github.com/olegvorobiov/cfl-ctf-challenge/blob/master/images/diagram1.png)
+
 2. Switch the groups into a Protect/Protect mode and now try some of these commands:
 
 * Cow should not be able to talk to sheep:
