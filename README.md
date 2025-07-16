@@ -134,7 +134,8 @@ If you restart Rancher Desktop at any point of this challenge, your progress wil
 2. Switch the groups into a Protect/Protect mode and now try some of these commands:
 * Cow should not be able to talk to sheep:
 ```bash
-    `kubectl exec -it --namespace warmfield $(kubectl get pods --namespace warmfield --selector app=cow -o jsonpath='{.items[*].metadata.name}') \
+kubectl exec -it --namespace warmfield \
+  $(kubectl get pods --namespace warmfield --selector app=cow -o jsonpath='{.items[*].metadata.name}') \
   -- curl sheep-svc.warmfield.svc.cluster.local:9000 --max-time 5
 ```
 * You should not be able to execute in any of the pods. Example for bee:
