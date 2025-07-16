@@ -219,6 +219,8 @@ kubectl exec -it --namespace charmland \
   -- curl goat-svc.alarmzone.svc.cluster.local:8010 --max-time 5
 ```
 
+test-delimiter
+
     **THIS COMMAND WILL RESULT IN FAILURE BY DESIGN**
     
     **FLAG part 1**
