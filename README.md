@@ -140,14 +140,26 @@ kubectl exec -it --namespace warmfield \
 ```
 * You should not be able to execute in any of the pods. Example for bee:
 
-    `kubectl exec -it --namespace treefarm $(kubectl get pods --namespace treefarm --selector app=bee -o jsonpath='{.items[*].metadata.name}') -- bash`
+```bash
+kubectl exec -it --namespace treefarm \
+  $(kubectl get pods --namespace treefarm --selector app=bee -o jsonpath='{.items[*].metadata.name}') \
+  -- bash
+```
 * Sheep should not be able to talk to rabbit.
 
-    `kubectl exec -it --namespace warmfield $(kubectl get pods --namespace warmfield --selector app=sheep -o jsonpath='{.items[*].metadata.name}') -- curl rabbit-svc.charmland.svc.cluster.local:8080 --max-time 5`
+```bash
+kubectl exec -it --namespace warmfield \
+  $(kubectl get pods --namespace warmfield --selector app=sheep -o jsonpath='{.items[*].metadata.name}') \
+  -- curl rabbit-svc.charmland.svc.cluster.local:8080 --max-time 5
+```
     
 * Chicken should be only able to communicate with suse.com, and not any other outside service. If you weren't able to accomplish this - don't worry it doesn't affect the end goal :-)
 
-    `kubectl exec -it --namespace farmyard $(kubectl get pods --namespace farmyard --selector app=chicken -o jsonpath='{.items[*].metadata.name}') -- curl https://google.com --max-time 5`
+```bash
+kubectl exec -it --namespace farmyard \
+  $(kubectl get pods --namespace farmyard --selector app=chicken -o jsonpath='{.items[*].metadata.name}') \
+  -- curl https://google.com --max-time 5
+```
 
 
 ### 3. Deploy a second set of workloads
@@ -178,10 +190,19 @@ The following table and diagram represent the connections we will attempt to mak
 
 2. Run the following commands:
 
-* `kubectl exec -it --namespace alarmzone $(kubectl get pods --namespace alarmzone --selector app=pig -o jsonpath='{.items[*].metadata.name}') -- curl chicken-svc.farmyard.svc.cluster.local:5000 --max-time 5`
+* 
+```bash 
+kubectl exec -it --namespace alarmzone \
+  $(kubectl get pods --namespace alarmzone --selector app=pig -o jsonpath='{.items[*].metadata.name}') \
+  -- curl chicken-svc.farmyard.svc.cluster.local:5000 --max-time 5
+```
 
-* `kubectl exec -it --namespace charmland $(kubectl get pods --namespace charmland --selector app=rabbit -o jsonpath='{.items[*].metadata.name}') -- curl goat-svc.alarmzone.svc.cluster.local:8010 --max-time 5`
-
+*
+```bash 
+kubectl exec -it --namespace charmland \
+  $(kubectl get pods --namespace charmland --selector app=rabbit -o jsonpath='{.items[*].metadata.name}') \
+  -- curl goat-svc.alarmzone.svc.cluster.local:8010 --max-time 5
+```
     **THIS COMMAND WILL RESULT IN FAILURE BY DESIGN**
     
     **FLAG part 1**
