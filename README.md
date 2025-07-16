@@ -79,7 +79,7 @@ Your mission, should you choose to accept it, is to:
 1. Install ingress-nginx
 ```bash 
 helm upgrade --install ingress-nginx ingress-nginx \
-  --repo https://kubernetes.github.io/ingress-nginx 
+  --repo https://kubernetes.github.io/ingress-nginx \
   --namespace ingress-nginx --create-namespace --version 4.11.2
 ```
 
