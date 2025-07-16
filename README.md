@@ -219,8 +219,6 @@ kubectl exec -it --namespace charmland \
   -- curl goat-svc.alarmzone.svc.cluster.local:8010 --max-time 5
 ```
 
-test-delimiter
-
     **THIS COMMAND WILL RESULT IN FAILURE BY DESIGN**
     
     **FLAG part 1**
@@ -230,8 +228,11 @@ test-delimiter
     Click on a Security Event in Notifications => Security Events Tab and add curl to a list of allowed commands.
 
     Run try to run the last command again:
-
-    `kubectl exec -it --namespace charmland $(kubectl get pods --namespace charmland --selector app=rabbit -o jsonpath='{.items[*].metadata.name}') -- curl goat-svc.alarmzone.svc.cluster.local:8010 --max-time 5` 
+```bash
+kubectl exec -it --namespace charmland \
+  $(kubectl get pods --namespace charmland --selector app=rabbit -o jsonpath='{.items[*].metadata.name}') \
+  -- curl goat-svc.alarmzone.svc.cluster.local:8010 --max-time 5
+```
 
     Now you should get a response.
 
