@@ -203,6 +203,7 @@ kubectl exec -it --namespace charmland \
   $(kubectl get pods --namespace charmland --selector app=rabbit -o jsonpath='{.items[*].metadata.name}') \
   -- curl goat-svc.alarmzone.svc.cluster.local:8010 --max-time 5
 ```
+
     **THIS COMMAND WILL RESULT IN FAILURE BY DESIGN**
     
     **FLAG part 1**
