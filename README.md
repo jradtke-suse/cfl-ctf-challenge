@@ -45,11 +45,11 @@ Your mission, should you choose to accept it, is to:
 
     **!IMPORTANT!** 
     
-    After the installation is completed you will have **helm**, **kubectl**, **rdctl**, and a few more tools installed. These utilities are installed in `~/.rd/bin`, check your `$PATH` variable if it contains this string. If not, you can temporary add it by running `export PATH=$PATH:$HOME/.rd/bin`. Remember once you exit the shell session this change will not persist.`
+    After the installation is completed you will have **helm**, **kubectl**, **rdctl**, and a few more tools installed. These utilities are installed in `~/.rd/bin`, check your `$PATH` variable to confirm that it contains this string. If not, you can temporary add it by running `export PATH=$PATH:$HOME/.rd/bin`. Remember once you exit the shell session this change will not persist.
 
     **IF YOU ARE ALREADY USING RANCHER DESKTOP**
 
-    Please do a Kubernetes Reset to get a clean environment for the challenge. Navigate to Troubleshooting and Click on Reset Kubernetes, it will take a minute or two to come back up.
+    Please do a "Kubernetes Reset" to get a clean environment for the challenge. Navigate to Troubleshooting and Click on Reset Kubernetes, it will take a minute or two to come back up.
 
 2. Additional configuration for Rancher Desktop:
 
@@ -70,7 +70,10 @@ Your mission, should you choose to accept it, is to:
 * Install git based on your operating system - https://git-scm.com/downloads.
 ## Setup
 ### Clone the Challenge repo
-1.  ```git clone https://github.com/olegvorobiov/cfl-ctf-challenge.git```
+1.  
+```bash
+git clone https://github.com/olegvorobiov/cfl-ctf-challenge.git
+```
 2. change directory inside the clonned repo: `cd cfl-ctf-challenge`
 ### Deploy modded NeuVector chart
 
@@ -126,9 +129,9 @@ kubectl apply -f farm-services.yaml
 
 If you restart Rancher Desktop at any point of this challenge, your progress will reset, and you will need to resume from **THIS STEP HERE:**
 
-1. Given the table below use your kubernetes knowledge to create these Network connections. You should not execute inside the pod. `curl` and `wget` are available within all of the pods. 
+1. Given the table below use your kubernetes knowledge to create these Network connections. You should now execute inside the pod. `curl` and `wget` are available within all of the pods. 
     
-    **FREE HINT:** To filter only the groups related to this challenge type `arm` in filter box.
+    **FREE HINT:** To filter only the groups related to this challenge type `arm` in filter box in the UI.
 
     | Source Deployment | Source Namespace | Target Deployment | Target Namespace | Port (TCP) | Allowed |
     |:-----------------:|:----------------:|:-----------------:|:----------------:|:----:|:-------:|
@@ -189,7 +192,6 @@ kubectl apply -f addon-services.yaml
 * nv.cow.warmfield
 * nv.rabbit.charmland
 * nv.sheep.warmfield
-
     and the following, second set should be in Discover/Discover:
 * nv.goat.alarmzone
 * nv.pig.alarmzone
