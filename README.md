@@ -197,7 +197,9 @@ kubectl apply -f addon-services.yaml
 * nv.cow.warmfield
 * nv.rabbit.charmland
 * nv.sheep.warmfield
+
     and the following, second set should be in Discover/Discover:
+
 * nv.goat.alarmzone
 * nv.pig.alarmzone
 
